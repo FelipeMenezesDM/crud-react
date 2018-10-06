@@ -25,32 +25,44 @@ export default class Dashboard extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-sm-8 admin-actions">
-									<div className="row">
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faHandsHelping} size="2x" /><br />
-										<span>Editais</span>
-									</a>
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faClipboard} size="2x" /><br />
-										<span>Questionários</span>
-									</a>
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faUserGraduate} size="2x" /><br />
-										<span>Alunos</span>
-									</a>
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faFlag} size="2x" /><br />
-										<span>Recursos</span>
-									</a>
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faChartBar} size="2x" /><br />
-										<span>Estatística</span>
-									</a>
-									<a className="col-sm-4" href="http://localhost">
-										<FontAwesomeIcon icon={Icons.faDatabase} size="2x" /><br />
-										<span>Banco de Dados</span>
-									</a>
+								<div className="col-sm-8">
+									<div className="row admin-actions">
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faHandsHelping} size="2x" /><br />
+												<span>Editais</span>
+											</a>
+										</div>
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faClipboard} size="2x" /><br />
+												<span>Questionários</span>
+											</a>
+										</div>
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faUserGraduate} size="2x" /><br />
+												<span>Alunos</span>
+											</a>
+										</div>
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faFlag} size="2x" /><br />
+												<span>Recursos</span>
+											</a>
+										</div>
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faChartBar} size="2x" /><br />
+												<span>Estatística</span>
+											</a>
+										</div>
+										<div className="col-sm-3">
+											<a href="http://localhost">
+												<FontAwesomeIcon icon={Icons.faDatabase} size="2x" /><br />
+												<span>Banco de Dados</span>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
