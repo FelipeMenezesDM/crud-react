@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LoginPage from './containers/login';
+import CadastroAluno from './containers/cadastro-aluno';
 
 class App extends Component {
   render() {
     return (
-      <LoginPage/>
+      <CadastroAluno />
     );
   }
 }

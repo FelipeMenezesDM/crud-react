@@ -5,7 +5,7 @@ import LoginForm from "../components/forms/login";
 import UltimasNoticias from "../components/noticias";
 
 
-export default class LoginPage extends Component {
+export default class Login extends Component {
 	render() {
 		return (
 			<div className="container">
@@ -15,7 +15,7 @@ export default class LoginPage extends Component {
 							<div className="card-header">Realize seu login</div>
 							<div className="card-body">
 								<Provider store={store}>
-									<LoginForm/>
+									<LoginForm />
 								</Provider>
 							</div>
 						</div>
