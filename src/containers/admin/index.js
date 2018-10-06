@@ -6,7 +6,7 @@ import * as Icons from '@fortawesome/free-solid-svg-icons';
 export default class Dashboard extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="admin-dashboard">
 				<h4>Bem-vindo ao SIGAEST, Felipe Menezes.</h4>
 				<p>Utilize o menu abaixo para realizar suas ações dentro do sistema.</p>
 				<div className="card">
@@ -16,7 +16,7 @@ export default class Dashboard extends React.Component {
 					<div className="card-body">
 							<div className="row">
 								<div className="col-sm-4">
-									<div className="card">
+									<div className="card mb-3">
 										<div className="card-body">
 											<h6>Dados pessoais</h6>
 											<b>Nome:</b> Felipe Menezes de Melo<br/>
