@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import CadastroAluno from './containers/cadastro-aluno';
+/*import React, { Component } from 'react';
+import CadastroAluno from './routes';
 
 class App extends Component {
   render() {
@@ -10,3 +10,4 @@ class App extends Component {
 }
 
 export default App;
+*/

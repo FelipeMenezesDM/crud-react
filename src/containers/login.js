@@ -4,9 +4,10 @@ import store from "../reducers/store";
 import LoginForm from "../components/forms/login";
 import UltimasNoticias from "../components/noticias";
 
-
 export default class Login extends Component {
 	render() {
+		document.title = "SIGAEST — Acesso ao sistema";
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -22,7 +23,7 @@ export default class Login extends Component {
 						<div className="card mb-5">
 							<div className="card-header">Crie sua conta</div>
 							<div className="card-body text-center">
-								<a href="http://localhost">Ainda não possui uma conta? Clique aqui.</a>
+								<a href="/cadastro">Ainda não possui uma conta? Clique aqui.</a>
 							</div>
 						</div>
 					</div>

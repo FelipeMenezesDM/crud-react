@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Provider } from "react-redux";
-import store from "../reducers/store";
 import CadastroAlunoForm from "../components/forms/cadastro-aluno";
+
+const handleSubmit = () => {};
 
 export default class CadastroAluno extends Component {
 	render() {
+		document.title = "SIGAEST — Cadastro de Alunos";
+		
 		return (
 			<div className="container form-container">
 				<h4>Crie sua conta no SIGAEST</h4>
@@ -14,9 +16,7 @@ export default class CadastroAluno extends Component {
 						Dados Pessoais
 					</div>
 					<div className="card-body">
-						<Provider store={store}>
-							<CadastroAlunoForm />
-						</Provider>
+						<CadastroAlunoForm onSubmit={handleSubmit} />
 					</div>
 				</div>
 			</div>

@@ -30,8 +30,8 @@ const LoginForm = props => {
 				 <button type="submit" className="btn btn-secondary btn-block">Entrar</button>
 			</div>
 			<div className="text-center">
-				<a href="http://localhost">Sua conta não possui senha?</a><br />
-				<a href="http://localhost">Esqueceu sua senha?</a>
+				<a href="/">Sua conta não possui senha?</a><br />
+				<a href="/">Esqueceu sua senha?</a>
 			</div>
 		</form>
 	);
