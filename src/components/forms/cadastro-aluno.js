@@ -4,10 +4,20 @@ import * as Formats from '../../actions/validationFormats';
 import * as Utils from '../../actions/utils';
 
 const CadastroAlunoForm = (props) => {
-	const { handleSubmit, pristine, reset, submitting } = props;
+	const { handleSubmit } = props;
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form method="post" onSubmit={handleSubmit}>
+			<Field
+				name="nome"
+				id="nome"
+				label="Nome *"
+				component={Utils.renderizarCampo}
+				type="text"
+				className="form-control"
+				validate={[Formats.obrigatorio]}
+				placeholder="Digite seu nome"
+			/>
 			<Field
 				name="cpf"
 				id="cpf"
@@ -15,7 +25,7 @@ const CadastroAlunoForm = (props) => {
 				component={Utils.renderizarCampo}
 				type="text"
 				className="form-control"
-				validate={[Formats.required]}
+				validate={[Formats.obrigatorio, Formats.cpf]}
 				placeholder="Digite seu CPF"
 			/>
 			<Field
@@ -24,7 +34,7 @@ const CadastroAlunoForm = (props) => {
 				component={Utils.renderizarCampo}
 				type="email"
 				label="E-mail *"
-				validate={[Formats.required, Formats.email]}
+				validate={[Formats.obrigatorio, Formats.email]}
 				className="form-control"
 				placeholder="Digite seu e-mail"
 			/>
@@ -34,7 +44,7 @@ const CadastroAlunoForm = (props) => {
 				component={Utils.renderizarCampo}
 				type="email"
 				label="Confirmação de e-mail *"
-				validate={[Formats.required, Formats.email]}
+				validate={[Formats.obrigatorio, Formats.email, Formats.compararEmails]}
 				className="form-control"
 				placeholder="Digite seu e-mail novamente"
 			/>
@@ -46,7 +56,7 @@ const CadastroAlunoForm = (props) => {
 				className="form-control"
 				placeholder="Digite sua senha"
 				label="Senha *"
-				validate={[Formats.required]}
+				validate={[Formats.obrigatorio, Formats.minimo(6), Formats.maximo(12)]}
 			/>
 			<Field
 				name="confirmaSenha"
@@ -55,7 +65,7 @@ const CadastroAlunoForm = (props) => {
 				type="password"
 				className="form-control"
 				placeholder="Dgite sua senha novamente"
-				validate={[Formats.required]}
+				validate={[Formats.obrigatorio, Formats.compararSenhas]}
 				label="Confirmação de senha *"
 			/>
 			<button className="btn btn-secondary btn-block">Criar conta</button>

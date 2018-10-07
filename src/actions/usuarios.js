@@ -3,7 +3,7 @@ import * as TIPOS from "./types";
 import * as Utils from "./utils";
 
 // Lista de usuarios do sistema
-const listaUsuarios = [
+export const listaUsuarios = [
 	{
 		id: 9999,
 		nome: "Administrador",
@@ -11,9 +11,9 @@ const listaUsuarios = [
 		ocupacao: "Administrador",
 		senha: "admin",
 		email: "admin@ufpa.br",
+		admin: 0,
 		dataCadastro: Utils.dataAtual(),
 		dataAtualizacao: Utils.dataAtual()
-
 	}
 ];
 
@@ -24,7 +24,7 @@ const novoUsuario = ( usuario ) => {
 	const dataCriacao = Utils.dataAtual();
 	const dataAtualizacao = Utils.dataAtual();
 
-	return { ...usuario, id, dataCriacao, dataAtualizacao };
+	return { id, ...usuario, dataCriacao, dataAtualizacao };
 };
 
 // Acoes CRUD para usuarios
@@ -35,13 +35,12 @@ export const adicionarUsuario = ( usuario ) => ({
 });
 
 // Listar usuarios cadastrados
-export const listarUsuarios = () => ({ type: TIPOS.READ_USUARIOS, listarUsuarios });
+export const listarUsuarios = () => ({ type: TIPOS.READ_USUARIOS, listaUsuarios });
 
 // Atualizar informacoes de usuario
 export const atualizarUsuario = ( id, usuario ) => ({
 	type: TIPOS.UPDATE_USUARIO,
-	usuario: { dataAtualizacao: Utils.dataAtual(), ...usuario },
-	id
+	usuario: { id, dataAtualizacao: Utils.dataAtual(), ...usuario },
 });
 
 // Remover usuario da lista

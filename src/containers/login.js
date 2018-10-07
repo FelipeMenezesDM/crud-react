@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
-import { Provider } from "react-redux";
-import store from "../reducers/store";
 import LoginForm from "../components/forms/login";
 import UltimasNoticias from "../components/noticias";
+import axios from 'axios';
+
+const login = (data) => {
+	if( data.cpf === "" ) {
+		return false;
+	}else{
+		return true;
+	}
+}
 
 export default class Login extends Component {
 	render() {
 		document.title = "SIGAEST — Acesso ao sistema";
+
+		const loginRequest = (data) => {
+			axios.get( '/login' );
+		}
 
 		return (
 			<div className="container">
@@ -15,9 +26,7 @@ export default class Login extends Component {
 						<div className="card mb-5">
 							<div className="card-header">Realize seu login</div>
 							<div className="card-body">
-								<Provider store={store}>
-									<LoginForm />
-								</Provider>
+								<LoginForm onSubmit={loginRequest} />
 							</div>
 						</div>
 						<div className="card mb-5">

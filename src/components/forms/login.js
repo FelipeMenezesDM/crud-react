@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-const LoginForm = props => {
+const LoginForm = (props) => {
+	const { handleSubmit } = props;
+
 	return (
-		<form>
+		<form method="post" onSubmit={handleSubmit}>
 			<div className="form-group">
 				<label htmlFor="cpf"><b>CPF</b></label>
 				<Field

@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from "../actions/usuarios";
 import CadastroAlunoForm from "../components/forms/cadastro-aluno";
 
-const handleSubmit = () => {};
-
-export default class CadastroAluno extends Component {
+// Adicionar novo usuario
+class CadastroAluno extends Component {
 	render() {
+		// Titulo da pagina
 		document.title = "SIGAEST — Cadastro de Alunos";
+
+		// Cadastrar novo aluno
+		const cadastrarAluno = ( aluno ) => {
+			const novoAluno = {
+				nome: aluno.nome,
+				cpf: aluno.cpf.replace(/\W+/g, ""),
+				email: aluno.email,
+				senha: aluno.senha,
+				admin: 0
+			}
+
+			this.props.adicionarUsuario( novoAluno );
+		}
 		
 		return (
 			<div className="container form-container">
@@ -16,10 +31,16 @@ export default class CadastroAluno extends Component {
 						Dados Pessoais
 					</div>
 					<div className="card-body">
-						<CadastroAlunoForm onSubmit={handleSubmit} />
+						<CadastroAlunoForm onSubmit={cadastrarAluno} />
 					</div>
 				</div>
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	usuarios: state.usuarios
+});
+
+export default connect(mapStateToProps, actions)(CadastroAluno);

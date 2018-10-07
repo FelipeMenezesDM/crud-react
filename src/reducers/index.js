@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import editais from "./editais";
+import usuarios from "./usuarios";
 import { reducer as forms } from 'redux-form';
 
 const rootReducer = combineReducers({
-	editais: editais,
+	usuarios: usuarios,
 	form: forms
 });
 
