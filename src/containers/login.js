@@ -1,32 +1,46 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import LoginForm from "../components/forms/login";
 import UltimasNoticias from "../components/noticias";
-import axios from 'axios';
+import { connect } from "react-redux";
+import * as actions from "../actions/usuarios";
+import cookie from "react-cookies";
 
-const login = (data) => {
-	if( data.cpf === "" ) {
-		return false;
-	}else{
-		return true;
+class Login extends Component {
+	componentDidMount() {
+		this.props.listarUsuarios();
 	}
-}
 
-export default class Login extends Component {
+	// Verificar se o usuario esta na lista
+	loginRequest = ( usuario ) => {
+		const usuarios = this.props.usuarios;
+
+		for( var i = 0; i < usuarios.length; i++ ) {
+			if( usuarios[i].cpf === usuario.cpf && usuarios[i].senha === usuario.senha ) {
+				cookie.save( "usuarioLogado", usuarios[ i ], {path: "/"} );
+				return;
+			}
+		}
+
+		alert("CPF ou senha inválidos.");
+	}
+
 	render() {
 		document.title = "SIGAEST — Acesso ao sistema";
 
-		const loginRequest = (data) => {
-			axios.get( '/login' );
-		}
-
 		return (
 			<div className="container">
+				{(
+					this.props.formStatus === false &&
+					<div className="alert alert-danger" role="alert">
+						CPF ou senha inválida.
+					</div>
+				)}
 				<div className="row">
 					<div className="col-sm-4">
 						<div className="card mb-5">
 							<div className="card-header">Realize seu login</div>
 							<div className="card-body">
-								<LoginForm onSubmit={loginRequest} />
+								<LoginForm onSubmit={this.loginRequest} />
 							</div>
 						</div>
 						<div className="card mb-5">
@@ -60,3 +74,9 @@ export default class Login extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	usuarios: state.usuarios.usuarios
+});
+
+export default connect(mapStateToProps, actions)(Login);

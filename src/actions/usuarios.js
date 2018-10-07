@@ -1,21 +1,27 @@
 // Tipos de acoes
 import * as TIPOS from "./types";
 import * as Utils from "./utils";
+import cookie from "react-cookies";
 
-// Lista de usuarios do sistema
-export const listaUsuarios = [
-	{
+
+// Obter lista de usuarios
+const listaUsuarios = () => {
+	const administrador = [{
 		id: 9999,
 		nome: "Administrador",
-		cpf: "44967350089",
+		cpf: "11111111111",
 		ocupacao: "Administrador",
 		senha: "admin",
 		email: "admin@ufpa.br",
 		admin: 0,
 		dataCadastro: Utils.dataAtual(),
 		dataAtualizacao: Utils.dataAtual()
-	}
-];
+	}];
+
+	const usuarios = cookie.load( "usuarios" ) || administrador;
+
+	return usuarios;
+}
 
 
 // Inclui novo usuario a lista
@@ -35,7 +41,7 @@ export const adicionarUsuario = ( usuario ) => ({
 });
 
 // Listar usuarios cadastrados
-export const listarUsuarios = () => ({ type: TIPOS.READ_USUARIOS, listaUsuarios });
+export const listarUsuarios = () => ({ type: TIPOS.READ_USUARIOS, usuarios: listaUsuarios() });
 
 // Atualizar informacoes de usuario
 export const atualizarUsuario = ( id, usuario ) => ({

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import * as Formats from '../../actions/validationFormats';
-import * as Utils from '../../actions/utils';
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import * as Formats from "../../actions/validationFormats";
+import * as Utils from "../../actions/utils";
 
 const CadastroAlunoForm = (props) => {
 	const { handleSubmit } = props;
@@ -17,6 +17,7 @@ const CadastroAlunoForm = (props) => {
 				className="form-control"
 				validate={[Formats.obrigatorio]}
 				placeholder="Digite seu nome"
+				autocomplete="off"
 			/>
 			<Field
 				name="cpf"
@@ -27,6 +28,7 @@ const CadastroAlunoForm = (props) => {
 				className="form-control"
 				validate={[Formats.obrigatorio, Formats.cpf]}
 				placeholder="Digite seu CPF"
+				autocomplete="off"
 			/>
 			<Field
 				name="email"
@@ -37,6 +39,7 @@ const CadastroAlunoForm = (props) => {
 				validate={[Formats.obrigatorio, Formats.email]}
 				className="form-control"
 				placeholder="Digite seu e-mail"
+				autocomplete="off"
 			/>
 			<Field
 				name="confirmaEmail"
@@ -47,6 +50,7 @@ const CadastroAlunoForm = (props) => {
 				validate={[Formats.obrigatorio, Formats.email, Formats.compararEmails]}
 				className="form-control"
 				placeholder="Digite seu e-mail novamente"
+				autocomplete="off"
 			/>
 			<Field
 				name="senha"

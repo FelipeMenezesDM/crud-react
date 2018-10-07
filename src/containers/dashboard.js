@@ -1,17 +1,19 @@
-import React from 'react';
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import * as Icons from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import * as Icons from "@fortawesome/free-solid-svg-icons";
+import {checkAuth, formataCPF} from "../actions/utils";
 
 export default class Dashboard extends React.Component {
 	render() {
+		const usuario = checkAuth();
+
 		return (
 			<div className="admin-dashboard">
-				<h4>Bem-vindo ao SIGAEST, Felipe Menezes.</h4>
+				<h4>Bem-vindo ao SIGAEST, {usuario.nome}.</h4>
 				<p>Utilize o menu abaixo para realizar suas ações dentro do sistema.</p>
 				<div className="card">
 					<div className="card-header bg-gradient-light">
-						Menu do administrador
+						{usuario.admin === 1 ? "Menu do administrador" : "Menu do aluno"}
 					</div>
 					<div className="card-body">
 							<div className="row">
@@ -19,9 +21,9 @@ export default class Dashboard extends React.Component {
 									<div className="card mb-3">
 										<div className="card-body">
 											<h6>Dados pessoais</h6>
-											<b>Nome:</b> Felipe Menezes de Melo<br/>
-											<b>Função:</b> Analista de Sistemas<br/>
-											<b>CPF:</b> 026.744.872-40
+											<b>Nome:</b> {usuario.nome}<br/>
+											<b>Função:</b> {usuario.cargo}<br/>
+											<b>CPF:</b> {formataCPF(usuario.cpf)}
 										</div>
 									</div>
 								</div>

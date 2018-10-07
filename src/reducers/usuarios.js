@@ -6,7 +6,7 @@ export default ( state = {}, action ) => {
 		case TIPOS.CREATE_USUARIO :
 			return { ...state, usuarios: state.usuarios.concat([ action.usuario ]) };
 		case TIPOS.READ_USUARIOS :
-			return { ...state, usuarios: action.listaUsuarios };
+			return { ...state, usuarios: action.usuarios };
 		case TIPOS.UPDATE_USUARIO :
 			return { ...state, usuarios: state.usuarios.map( ( usuario ) => ( usuario.id === action.usuario.id ) ? action.usuario : usuario ) };
 		case TIPOS.DELETE_USUARIO :
