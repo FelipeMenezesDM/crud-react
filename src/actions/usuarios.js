@@ -13,7 +13,7 @@ const listaUsuarios = () => {
 		ocupacao: "Administrador",
 		senha: "admin",
 		email: "admin@ufpa.br",
-		admin: 0,
+		admin: 1,
 		dataCadastro: Utils.dataAtual(),
 		dataAtualizacao: Utils.dataAtual()
 	}];

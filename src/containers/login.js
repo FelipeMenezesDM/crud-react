@@ -13,10 +13,12 @@ class Login extends Component {
 	// Verificar se o usuario esta na lista
 	loginRequest = ( usuario ) => {
 		const usuarios = this.props.usuarios;
+		usuario.cpf = usuario.cpf.replace(/\W+/g, "");
 
 		for( var i = 0; i < usuarios.length; i++ ) {
 			if( usuarios[i].cpf === usuario.cpf && usuarios[i].senha === usuario.senha ) {
-				cookie.save( "usuarioLogado", usuarios[ i ], {path: "/"} );
+				cookie.save( "sessaoUsuario", usuarios[ i ], {path: "/"} );
+				window.location.reload();
 				return;
 			}
 		}

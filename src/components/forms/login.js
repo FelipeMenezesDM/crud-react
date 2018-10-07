@@ -13,8 +13,8 @@ const LoginForm = (props) => {
 				id="cpf"
 				component={Utils.renderizarCampo}
 				type="text"
-				className="form-control"
-				autocomplete="off"
+				className="form-control mask-cpf"
+				autoComplete="off"
 				label="CPF"
 				placeholder="Dgite seu CPF"
 				validate={[Formats.obrigatorio, Formats.cpf]}

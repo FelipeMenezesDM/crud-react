@@ -53,9 +53,14 @@ footer {
 	background: -moz-linear-gradient(#337AB7, #286192);
 	background: -webkit-linear-gradient(#337AB7, #286192);
 	padding: 15px 0;
-	height: 50px;
 	width: 100%;
 	box-shadow: 0 0 12px rgba(0,0,0,0.6);
+	color: #fff;
+}
+
+.user-bar button.btn-primary {
+	background: none !important;
+	border: none !important;
 }
 
 footer {

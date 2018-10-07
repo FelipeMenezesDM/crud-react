@@ -17,7 +17,7 @@ const CadastroAlunoForm = (props) => {
 				className="form-control"
 				validate={[Formats.obrigatorio]}
 				placeholder="Digite seu nome"
-				autocomplete="off"
+				autoComplete="off"
 			/>
 			<Field
 				name="cpf"
@@ -25,10 +25,10 @@ const CadastroAlunoForm = (props) => {
 				label="CPF *"
 				component={Utils.renderizarCampo}
 				type="text"
-				className="form-control"
+				className="form-control mask-cpf"
 				validate={[Formats.obrigatorio, Formats.cpf]}
 				placeholder="Digite seu CPF"
-				autocomplete="off"
+				autoComplete="off"
 			/>
 			<Field
 				name="email"
@@ -39,7 +39,8 @@ const CadastroAlunoForm = (props) => {
 				validate={[Formats.obrigatorio, Formats.email]}
 				className="form-control"
 				placeholder="Digite seu e-mail"
-				autocomplete="off"
+				autoComplete="off"
+				mask={'+4\\9 99 999 99'}
 			/>
 			<Field
 				name="confirmaEmail"
@@ -50,7 +51,7 @@ const CadastroAlunoForm = (props) => {
 				validate={[Formats.obrigatorio, Formats.email, Formats.compararEmails]}
 				className="form-control"
 				placeholder="Digite seu e-mail novamente"
-				autocomplete="off"
+				autoComplete="off"
 			/>
 			<Field
 				name="senha"
@@ -72,7 +73,12 @@ const CadastroAlunoForm = (props) => {
 				validate={[Formats.obrigatorio, Formats.compararSenhas]}
 				label="Confirmação de senha *"
 			/>
-			<button className="btn btn-secondary btn-block">Criar conta</button>
+			<div className="form-group">
+				<button className="btn btn-secondary btn-block">Criar conta</button>
+			</div>
+			<div className="text-center">
+				<a href="/login">Já possui uma conta? Clique aqui para fazer login.</a>
+			</div>
 		</form>
 	);
 }

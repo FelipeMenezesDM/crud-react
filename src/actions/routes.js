@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import Login from "../containers/login";
+import Logout from "../actions/logout";
 import CadastroAluno from "../containers/cadastro-aluno";
 import Dashboard from "../containers/dashboard";
 import {checkAuth} from "./utils"
@@ -35,6 +36,7 @@ const Routes = () => (
 	<Router>
 		<div>
 			<NoAuthRoute path="/login" component={Login} />
+			<AuthRoute path="/logout" component={Logout} />
 			<NoAuthRoute path="/cadastro" component={CadastroAluno} />
 			<AuthRoute path="/admin" admin="1" component={Dashboard} />
 			<AuthRoute path="/aluno" component={Dashboard} />

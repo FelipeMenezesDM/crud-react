@@ -11,11 +11,16 @@ class CadastroAluno extends Component {
 	}
 
 	// Verificar duplicados
-	/*verificarDuplicados = ( campos ) => {
-		for( var i = 0; this.props.usuarios; i++ ) {
-			if( campos.cpf ==  )
+	verificarCPFDuplicado = ( cpf ) => {
+		const usuarios = this.props.usuarios;
+
+		for( var i = 0; i < usuarios.length; i++ ) {
+			if( usuarios[i] && cpf === usuarios[i].cpf )
+				return false;
 		}
-	}*/
+
+		return true;
+	}
 
 	// Cadastrar novo aluno
 	cadastrarAluno = ( aluno ) => {
@@ -26,6 +31,11 @@ class CadastroAluno extends Component {
 			senha: aluno.senha,
 			ocupacao: "Estudante",
 			admin: 0
+		}
+
+		if( !this.verificarCPFDuplicado( novoAluno.cpf ) ) {
+			alert( "O CPF informado já está cadastrado no sistema." );
+			return false;
 		}
 
 		// Salvar aluno e atualizar o cookie

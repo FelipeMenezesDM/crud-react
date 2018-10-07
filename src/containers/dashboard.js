@@ -1,9 +1,63 @@
-import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import * as Icons from "@fortawesome/free-solid-svg-icons";
+import React, {Component} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {
+	faHandsHelping,
+	faClipboard,
+	faUserGraduate,
+	faFlag,
+	faChartBar,
+	faDatabase,
+	faUser,
+	faHistory,
+	faLock
+} from "@fortawesome/free-solid-svg-icons";
 import {checkAuth, formataCPF} from "../actions/utils";
 
-export default class Dashboard extends React.Component {
+const Botao = ( props ) => {
+	return (
+		<div className="col-sm-3">
+			<a href="{props.contexto}">
+				<FontAwesomeIcon icon={props.icone} size="2x" /><br />
+				<span>{props.titulo}</span>
+			</a>
+		</div>
+	);
+};
+
+const Botoes = ( botoes ) => {
+	return botoes.itens.map((item, index) => {
+		return <Botao key={index} titulo={item.titulo} icone={item.icone} contexto={item.contexto} />
+	});
+};
+
+class BotoesDashboard extends Component {
+	render() {
+		const usuario = checkAuth();
+		const botoesAluno = [
+			{ titulo: "Histórico", icone: faHistory, contexto: "/aluno/historico" },
+			{ titulo: "Editais", icone: faHandsHelping, contexto: "/aluno/editais" },
+			{ titulo: "Conta", icone: faUser, contexto: "/aluno/conta" }
+		];
+		const botoesAdmin = [
+			{ titulo: "Administradores", icone: faLock, contexto: "/admin/administradores" },
+			{ titulo: "Editais", icone: faHandsHelping, contexto: "/admin/editais" },
+			{ titulo: "Questionários", icone: faClipboard, contexto: "/admin/questionarios" },
+			{ titulo: "Alunos", icone: faUserGraduate, contexto: "/admin/alunos" },
+			{ titulo: "Recursos", icone: faFlag, contexto: "/admin/recursos" },
+			{ titulo: "Estatística", icone: faChartBar, contexto: "/admin/estatistica" },
+			{ titulo: "Banco de Dados", icone: faDatabase, contexto: "/aluno/banco-de-dados" },
+			{ titulo: "Conta", icone: faUser, contexto: "/admin/conta" }
+		];
+
+		if( usuario.admin === 1 ) {
+			return <Botoes itens={botoesAdmin} />;
+		}else{
+			return <Botoes itens={botoesAluno} />;
+		}
+	}
+}
+
+export default class Dashboard extends Component {
 	render() {
 		const usuario = checkAuth();
 
@@ -16,58 +70,23 @@ export default class Dashboard extends React.Component {
 						{usuario.admin === 1 ? "Menu do administrador" : "Menu do aluno"}
 					</div>
 					<div className="card-body">
-							<div className="row">
-								<div className="col-sm-4">
-									<div className="card mb-3">
-										<div className="card-body">
-											<h6>Dados pessoais</h6>
-											<b>Nome:</b> {usuario.nome}<br/>
-											<b>Função:</b> {usuario.cargo}<br/>
-											<b>CPF:</b> {formataCPF(usuario.cpf)}
-										</div>
-									</div>
-								</div>
-								<div className="col-sm-8">
-									<div className="row admin-actions">
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faHandsHelping} size="2x" /><br />
-												<span>Editais</span>
-											</a>
-										</div>
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faClipboard} size="2x" /><br />
-												<span>Questionários</span>
-											</a>
-										</div>
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faUserGraduate} size="2x" /><br />
-												<span>Alunos</span>
-											</a>
-										</div>
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faFlag} size="2x" /><br />
-												<span>Recursos</span>
-											</a>
-										</div>
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faChartBar} size="2x" /><br />
-												<span>Estatística</span>
-											</a>
-										</div>
-										<div className="col-sm-3">
-											<a href="http://localhost">
-												<FontAwesomeIcon icon={Icons.faDatabase} size="2x" /><br />
-												<span>Banco de Dados</span>
-											</a>
-										</div>
+						<div className="row">
+							<div className="col-sm-4">
+								<div className="card mb-3">
+									<div className="card-body">
+										<h6>Dados pessoais</h6>
+										<b>Nome:</b> {usuario.nome}<br/>
+										<b>Função:</b> {usuario.ocupacao}<br/>
+										<b>CPF:</b> {formataCPF(usuario.cpf)}
 									</div>
 								</div>
 							</div>
+							<div className="col-sm-8">
+								<div className="row admin-actions">
+									<BotoesDashboard />
+								</div>
+							</div>
+						</div>
 					</div>
 					<hr/>
 					<div className="card-body">
