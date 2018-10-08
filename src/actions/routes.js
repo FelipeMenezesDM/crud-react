@@ -39,6 +39,7 @@ const AuthRoute = ({ component: Component, ...attrs }) => {
 const Routes = () => (
 	<Router>
 		<div>
+			<NoAuthRoute exact path="/" component={Login} />
 			<NoAuthRoute path="/login" component={Login} />
 			<AuthRoute path="/logout" component={Logout} />
 			<NoAuthRoute path="/cadastro" component={CadastroAluno} />
@@ -48,7 +49,7 @@ const Routes = () => (
 			<AuthRoute excat path="/admin/cadastro-editais" admin="1" component={CadastroEditais} />
 			<AuthRoute excat path="/aluno/editais" component={ListarEditais} />
 			<AuthRoute excat path="/admin/alunos" admin="1" component={ListarAlunos} />
-			<AuthRoute excat path="/admin/visualizar-edital" admin="1" component={VisualizarEdital} />
+			<AuthRoute excat path="/admin/visualizar-edital/:id" admin="1" component={VisualizarEdital} />
 		</div>
 	</Router>
 );

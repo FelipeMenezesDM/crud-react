@@ -1,8 +1,8 @@
 {
-  "name": "crud-react",
+  "name": "crud-react-io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://felipemenezesdm.github.io/crud-react",
+  "homepage": "https://felipemenezesdm.github.io/crud-react-io",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-brands-svg-icons": "^5.3.1",

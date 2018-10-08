@@ -13,9 +13,9 @@ import {
 // Listar Editais
 const Edital = (props) => {
 	const usuario = checkAuth();
-	const editarLink = "/admin/editar-edital?id=" + props.id;
-	const visualizarLink = "/admin/visualizar-edital?id=" + props.id;
-	const excluirLink = "/admin/excluir-edital?id=" + props.id;
+	const editarLink = "/admin/editar-edital/" + props.id;
+	const visualizarLink = "/admin/visualizar-edital/" + props.id;
+	const excluirLink = "/admin/excluir-edital/" + props.id;
 
 	return (
 		<tr>
