@@ -9,10 +9,11 @@ export default class Cabecalho extends Component {
 			<header>
 				<div className="header-wrapper justify-content-between row m-0">
 					<div className="col-sm-3">
-						----LOGO-----
+						<h3>SIGAEST</h3>
 					</div>
 					{( usuario ) ?
 						<div className="col-sm-3 user-bar">
+							<a href="/login" className="btn btn-primary float-right ml-3">Dashboard</a>
 							<div className="dropdown float-right">
 								<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{usuario.nome}</button>
 								<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

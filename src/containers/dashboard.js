@@ -16,7 +16,7 @@ import {checkAuth, formataCPF} from "../actions/utils";
 const Botao = ( props ) => {
 	return (
 		<div className="col-sm-3">
-			<a href="{props.contexto}">
+			<a href={props.contexto}>
 				<FontAwesomeIcon icon={props.icone} size="2x" /><br />
 				<span>{props.titulo}</span>
 			</a>
@@ -45,7 +45,7 @@ class BotoesDashboard extends Component {
 			{ titulo: "Alunos", icone: faUserGraduate, contexto: "/admin/alunos" },
 			{ titulo: "Recursos", icone: faFlag, contexto: "/admin/recursos" },
 			{ titulo: "Estatística", icone: faChartBar, contexto: "/admin/estatistica" },
-			{ titulo: "Banco de Dados", icone: faDatabase, contexto: "/aluno/banco-de-dados" },
+			{ titulo: "Banco de Dados", icone: faDatabase, contexto: "/admin/banco-de-dados" },
 			{ titulo: "Conta", icone: faUser, contexto: "/admin/conta" }
 		];
 
@@ -88,20 +88,24 @@ export default class Dashboard extends Component {
 							</div>
 						</div>
 					</div>
-					<hr/>
-					<div className="card-body">
-						<form>
-						  <div className="form-group mb-0">
-						    <h6><label htmlFor="nomeAluno">Pesquise informações de um aluno específico.</label></h6>
-						    <div className="row">
-						    	<label htmlFor="nomeAluno" className="col-sm-2 col-form-label">Nome do aluno:</label>
-						    	<div className="col-sm-10">
-						    		<input type="text" className="form-control" name="nomeAluno" id="nomeAluno" />
-						    	</div>
-						    </div>
-						  </div>
-						</form>
+					{ usuario.admin === 1 ?
+					<div>
+						<hr/>
+						<div className="card-body">
+							<form>
+							  <div className="form-group mb-0">
+							    <h6><label htmlFor="nomeAluno">Pesquise informações de um aluno específico.</label></h6>
+							    <div className="row">
+							    	<label htmlFor="nomeAluno" className="col-sm-2 col-form-label">Nome do aluno:</label>
+							    	<div className="col-sm-10">
+							    		<input type="text" className="form-control" name="nomeAluno" id="nomeAluno" />
+							    	</div>
+							    </div>
+							  </div>
+							</form>
+						</div>
 					</div>
+					: "" }
 				</div>
 				<br /><br />
 				<p className="text-center">

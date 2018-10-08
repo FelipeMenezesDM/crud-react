@@ -4,6 +4,10 @@ import Login from "../containers/login";
 import Logout from "../actions/logout";
 import CadastroAluno from "../containers/cadastro-aluno";
 import Dashboard from "../containers/dashboard";
+import ListarEditais from "../containers/editais";
+import CadastroEditais from "../containers/cadastro-editais";
+import ListarAlunos from "../containers/listar-alunos";
+import VisualizarEdital from "../containers/visualizar-edital";
 import {checkAuth} from "./utils"
 
 // Criar rotas para paginas publicas que nao serao mais exibidas apos login
@@ -26,7 +30,7 @@ const AuthRoute = ({ component: Component, ...attrs }) => {
 	const sessao = checkAuth();
 
 	return <Route {...attrs} render={(props) => {
-		if( !sessao || ( props.admin === "1" && sessao.admin !== 1 ) ) 
+		if( !sessao || ( attrs.admin === "1" && sessao.admin !== 1 ) ) 
 			return <Redirect to="/login" />;
 		return <Component {...props} />;
 	}} />;
@@ -38,8 +42,13 @@ const Routes = () => (
 			<NoAuthRoute path="/login" component={Login} />
 			<AuthRoute path="/logout" component={Logout} />
 			<NoAuthRoute path="/cadastro" component={CadastroAluno} />
-			<AuthRoute path="/admin" admin="1" component={Dashboard} />
-			<AuthRoute path="/aluno" component={Dashboard} />
+			<AuthRoute exact path="/admin" admin="1" component={Dashboard} />
+			<AuthRoute exact path="/aluno" component={Dashboard} />
+			<AuthRoute excat path="/admin/editais" admin="1" component={ListarEditais} />
+			<AuthRoute excat path="/admin/cadastro-editais" admin="1" component={CadastroEditais} />
+			<AuthRoute excat path="/aluno/editais" component={ListarEditais} />
+			<AuthRoute excat path="/admin/alunos" admin="1" component={ListarAlunos} />
+			<AuthRoute excat path="/admin/visualizar-edital" admin="1" component={VisualizarEdital} />
 		</div>
 	</Router>
 );

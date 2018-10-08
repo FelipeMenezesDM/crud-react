@@ -19,6 +19,16 @@ h6 {
 	font-weight: bold;
 }
 
+.tableActions a {
+	width: 36px;
+	height: 36px;
+	text-align: center;
+	color: #FFF !important;
+	padding: 0;
+	line-height: 36px;
+	margin: 0 5px;
+}
+
 .page-content {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -36,6 +46,13 @@ hr {
 .form-container {
 	max-width: 600px;
 	margin: 0 auto;
+}
+
+label input + span,
+label input + span {
+	position: relative;
+	top: -2px;
+	padding-left: 7px;
 }
 
 
